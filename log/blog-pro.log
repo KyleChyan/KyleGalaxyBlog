@@ -1,0 +1,10 @@
+2022-06-03 15:54:32.572  INFO 9848 --- [restartedMain] com.kyle.Blog01Application               : Starting Blog01Application on DESKTOP-SMACA9F with PID 9848 (D:\ideaC\JavaProject\blog-01\target\classes started by dell in D:\ideaC\JavaProject\blog-01)
+2022-06-03 15:54:32.574  INFO 9848 --- [restartedMain] com.kyle.Blog01Application               : The following profiles are active: pro
+2022-06-03 15:54:33.539  WARN 9848 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kyle]' package. Please check your configuration.
+2022-06-03 15:54:35.634  WARN 9848 --- [restartedMain] .t.AbstractTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-06-03 15:54:36.330  INFO 9848 --- [restartedMain] com.kyle.Blog01Application               : Started Blog01Application in 4.137 seconds (JVM running for 5.676)
+2022-06-03 15:55:24.090  INFO 3284 --- [restartedMain] com.kyle.Blog01Application               : Starting Blog01Application on DESKTOP-SMACA9F with PID 3284 (D:\ideaC\JavaProject\blog-01\target\classes started by dell in D:\ideaC\JavaProject\blog-01)
+2022-06-03 15:55:24.092  INFO 3284 --- [restartedMain] com.kyle.Blog01Application               : The following profiles are active: pro
+2022-06-03 15:55:25.555  WARN 3284 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.kyle]' package. Please check your configuration.
+2022-06-03 15:55:28.893  WARN 3284 --- [restartedMain] .t.AbstractTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-06-03 15:55:29.924  INFO 3284 --- [restartedMain] com.kyle.Blog01Application               : Started Blog01Application in 6.347 seconds (JVM running for 7.995)
