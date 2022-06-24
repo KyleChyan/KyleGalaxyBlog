@@ -13,8 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 /**
- * project name   :blog-01
- * project version:1.0
+ * project name   :KyleGalaxyBlog
  *
  * @author :KyleChyan https://github.com/KyleChyan
  * @date :2022/6/15,16:21,星期三
