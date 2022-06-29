@@ -25,13 +25,13 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/gologin")
+    @RequestMapping("/login")
     public String loginPage(){
         return "admin/login";
     }
 
-    @PostMapping("/login")
-    public String loginPage(@RequestParam String username, @RequestParam String password,
+    @PostMapping("/gologin")
+    public String gologin(@RequestParam String username, @RequestParam String password,
                             HttpSession session, RedirectAttributes attributes) {
         User user = userService.checkUser(username, password);
         if (user != null) {
@@ -40,12 +40,12 @@ public class LoginController {
             return "redirect:/admin/bloglist";
         } else {
             attributes.addFlashAttribute("message", "用户名或密码错误");
-            return "redirect:/admin/gologin";
+            return "redirect:/admin/login";
         }
     }
     @GetMapping("/loginout")
     public String loginout(HttpSession session){
         session.removeAttribute("user");
-        return "redirect:/admin/gologin";
+        return "redirect:/admin/login";
     }
 }

@@ -15,6 +15,6 @@ public class BlogListController {
 
     @RequestMapping("/bloglist")
     public String bloglist(){
-        return "admin/adminblog";
+        return "admin/bloglist";
     }
 }

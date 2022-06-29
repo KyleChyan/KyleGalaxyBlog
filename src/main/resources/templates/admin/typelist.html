@@ -14,10 +14,10 @@
     <nav class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
         <div class="ui container">
             <div class="ui inverted menu secondary stackable menu">
-                <h2 class="ui teal header item"><i class="home icon"></i></h2>
-                <a href="#" class="active menu-item item mobile-hide"><i class="home icon"></i>博客</a>
+                <h2 class="ui teal header item"> <i class="home icon"><a th:href="@{/}"></a></i></h2>
+                <a href="#" th:href="@{/admin/bloglist}" class=" menu-item item mobile-hide"><i class="home icon"></i>博客</a>
                 <a href="#" class="item mobile-hide">|</a>
-                <a href="#" class="menu-item item mobile-hide"><i class="chart pie icon"></i>分类</a>
+                <a href="#" class="active menu-item item mobile-hide"><i class="chart pie icon"></i>分类</a>
                 <a href="#" class="item mobile-hide">|</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="tags icon"></i>标签</a>
 <!--                用户头像-->
@@ -50,47 +50,18 @@
     <!--展示的分页中间内容-->
     <div class="in-padded-tb-three blog-container-60">
         <div class="ui container">
-            <form action="#" method="post" class="ui segment form">
-                <div class="inline fields">
-                    <div class="field">
-                        <input type="text" name="title" placeholder="标题">
-                    </div>
-                    <div class="field">
-                        <select class="ui dropdown">
-                            <option value="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" id="recommend">
-                            <label for="recommend">推荐</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <button class="ui teal basic button"><i class="search icon"></i>搜索</button>
-                    </div>
-                </div>
-            </form>
             <table class="ui striped table">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>标题</th>
-                        <th>类型</th>
-                        <th>推荐</th>
-                        <th>更新时间</th>
+                        <th>名称</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>什么是上班</td>
-                    <td>生活</td>
-                    <td>2013-1-1</td>
-                    <td><i class="large green checkmark icon"></i></td>
+                <tr th:each="type,iterStat:${typePageInfo.list}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${type.name}">生活</td>
                     <td>
                         <a href="#" class="ui mini teal button">编辑</a>
                         <a href="#" class="ui mini red button">删除</a>
@@ -101,10 +72,10 @@
                 <tr>
                     <th colspan="6">
                         <div class="ui pagination mini menu">
-                            <a class="icon item">
+                            <a class="icon item" th:if="${typePageInfo.hasPreviousPage}" th:href="@{/admin/typelist?pageNum=}+${typePageInfo.prePage}">
                                 <i class="left chevron icon"></i>
                             </a>
-                            <a class="icon item">
+                            <a class="icon item" th:if="${typePageInfo.hasNextPage}" th:href="@{/admin/typelist?pageNum=}+${typePageInfo.nextPage}">
                                 <i class="right chevron icon"></i>
                             </a>
                         </div>

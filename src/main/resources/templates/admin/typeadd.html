@@ -3,11 +3,13 @@
 <head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>博客管理</title>
+    <title>发布新博客</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/indexcss.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
 </head>
 <body>
     <!--导航-->
@@ -29,7 +31,8 @@
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
-                            <a th:href="@{/admin/loginout}" href="#" class="item">注销</a>
+                            <a href="#" class="item">注销</a>
+                            <a href="#" class="item">注销</a>
                         </div>
                     </div>
                 </div>
@@ -41,8 +44,8 @@
     <!--二级导航-->
     <div class="ui attached pointing menu">
         <div class="ui container">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" class="teal active item">发布 🐂 </a>
+            <a href="#" class="item">列表</a>
         </div>
     </div>
     <br>
@@ -50,72 +53,47 @@
     <!--展示的分页中间内容-->
     <div class="in-padded-tb-three blog-container-60">
         <div class="ui container">
+            <!--中间部分整体是一个表单-->
             <form action="#" method="post" class="ui segment form">
-                <div class="inline fields">
-                    <div class="field">
-                        <input type="text" name="title" placeholder="标题">
-                    </div>
-                    <div class="field">
-                        <select class="ui dropdown">
-                            <option value="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" id="recommend">
-                            <label for="recommend">推荐</label>
+                <!--名称-->
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <div class="ui label">
+                            <div class="text">名称</div>
                         </div>
-                    </div>
-                    <div class="field">
-                        <button class="ui teal basic button"><i class="search icon"></i>搜索</button>
+                        <input type="text" name="name" placeholder="分类名称">
+
                     </div>
                 </div>
+
+                <!--错误信息-->
+                <div class="ui error message">
+
+                </div>
+                <!--返回和发布-->
+                <div class="ui container right aligned">
+<!--                    返回按钮-->
+                    <button type="button" class="ui red basic mini labeled icon button active" onclick="window.history.go(-1)">
+                        <i class="left chevron icon"></i>
+                        返回
+                    </button>
+<!--                    保存按钮-->
+                    <button class="ui green basic mini labeled icon button active">
+                        <i class="save icon"></i>
+                        保存
+                    </button>
+                </div>
             </form>
-            <table class="ui striped table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>标题</th>
-                        <th>类型</th>
-                        <th>推荐</th>
-                        <th>更新时间</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>什么是上班</td>
-                    <td>生活</td>
-                    <td>2013-1-1</td>
-                    <td><i class="large green checkmark icon"></i></td>
-                    <td>
-                        <a href="#" class="ui mini teal button">编辑</a>
-                        <a href="#" class="ui mini red button">删除</a>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th colspan="6">
-                        <div class="ui pagination mini menu">
-                            <a class="icon item">
-                                <i class="left chevron icon"></i>
-                            </a>
-                            <a class="icon item">
-                                <i class="right chevron icon"></i>
-                            </a>
-                        </div>
-                        <a href="#" class="ui mini right floated blue basic button"><i class="pencil alternate icon"></i>新增</a>
-                    </th>
-                </tr>
-                </tfoot>
-            </table>
+
         </div>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!--底部footer-->
     <footer class="ui inverted vertical segment in-padded-tb-three">
         <div class="ui center aligned container">
@@ -158,20 +136,59 @@
     </footer>
 
 <script>
-$('#payButton').popup({
-    popup : $('.payQR.popup'),
-    on : 'click',
-    position : 'bottom center'
-});
-$('.menu.toggle').click(function () {
-    $('.menu-item').toggleClass('mobile-hide');
+    //md编辑器初始化
+    var contentEditor;
+    $(function() {
+        contentEditor = editormd("contentmd", {
+            width   : "100%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "../static/lib/editormd/lib/"
+        });
+    });
+    //移动端适配
+    $('.menu.toggle').click(function () {
+        $('.menu-item').toggleClass('mobile-hide');
 
-});
-$('.ui.dropdown')
-    .dropdown({
-        on:'hover'
-    })
-;
+    });
+    //下拉菜单设定
+    $('.ui.dropdown')
+        .dropdown({
+            on:'hover'
+        });
+    //表单提交验证
+    $('.ui.form').form({
+        fields : {
+            title: {
+                identifier:'title',
+                rules:[{
+                    type: 'empty',
+                    prompt: '请输入博客标题'
+                }]
+            },
+            content: {
+                identifier:'content',
+                rules:[{
+                    type: 'empty',
+                    prompt: '请输入博客内容'
+                }]
+            },
+            type: {
+                identifier:'type',
+                rules:[{
+                    type: 'empty',
+                    prompt: '请选择分类'
+                }]
+            },
+            tag: {
+                identifier:'tag',
+                rules:[{
+                    type   : 'minCount[1]',
+                    prompt : '请选择至少一个标签'
+                }]
+            }
+        }
+    });
 </script>
 
 

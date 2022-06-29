@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * project name   :blog-01
- * project version:1.0
+ * project name   :KyleGalaxyBlog
  *
  * @author :KyleChyan https://github.com/KyleChyan
  * @date :2022/6/23,20:06,星期四
@@ -19,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         //登录拦截
         if (httpServletRequest.getSession().getAttribute("user") == null) {
-            httpServletResponse.sendRedirect("/admin/gologin");
+            httpServletResponse.sendRedirect("/admin/login");
             return false;
         }
         else

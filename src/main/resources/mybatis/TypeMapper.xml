@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kyle.mapper.TypeMapper">
+    <select id="selectType" resultType="com.kyle.pojo.Type">
+        select *
+        from t_type
+        where id=#{id};
+    </select>
+    <select id="listType" resultType="com.kyle.pojo.Type">
+        select *
+        from t_type
+    </select>
+<!--    /* limit #{currIndex} , #{pageSize};*//*如果使用map+sql的方法实现分页，则需要加上limit关键字*/-->
+    <insert id="insertType" parameterType="com.kyle.pojo.Type">
+        insert into t_type (id, name)
+        values (#{type.id},#{type.name});
+    </insert>
+    <update id="updateType" parameterType="Map">
+        update t_type
+        set name = #{name}
+            where id = #{id};
+    </update>
+    <delete id="deleteType" parameterType="Long">
+        delete
+        from t_type
+        where id = #{id};
+    </delete>
+</mapper>
