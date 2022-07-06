@@ -20,7 +20,7 @@ public interface TypeService {
 
     PageInfo<Type> listType(int pageNum, int pageSize);
 
-    Type insertType(Type type);
+    int insertType(Type type);
 
     int updateType(Map<String,Object> map);
 

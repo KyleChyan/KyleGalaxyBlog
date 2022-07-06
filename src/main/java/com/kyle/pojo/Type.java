@@ -3,8 +3,7 @@ package com.kyle.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.cdi.Eager;
-
+import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,7 @@ public class Type {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message="分类的名称不可为空")
     private String name;
 
     @OneToMany(mappedBy = "type")

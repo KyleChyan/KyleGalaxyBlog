@@ -11,8 +11,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * project name   :KyleGalaxyBlog
@@ -27,7 +30,7 @@ public class TypeController {
     private TypeService typeService;
 
     //前往分类列表
-    @RequestMapping("/typelist")
+    @GetMapping("/typelist")
     public String gotypelist(@RequestParam(value = "pageNum",required = false,defaultValue = "1")int pageNum,
                                     @RequestParam(value = "pageSize",required = false,defaultValue = "5") int pageSize,Model model) {
         /*
@@ -50,11 +53,30 @@ public class TypeController {
         return "admin/typeadd";
     }
     //新增分类
-    @RequestMapping("/goaddtype")
-    public String goaddtype(){
-        return "admin/typelist";
+    @PostMapping("/typelist")
+    public String goaddtype(Type type, RedirectAttributes attributes){
+
+        if (type == null) {
+            attributes.addFlashAttribute("message","操作失败");
+        }
+        else {
+            typeService.insertType(type);
+            attributes.addFlashAttribute("message","操作成功");
+        }
+        return "redirect:/admin/typelist";
     }
     //更改分类
+    @RequestMapping("/updatetype/{id}")
+    public String updateType(String name,int id){
+        Map<String, Object> map = new HashMap<>();
+        map.put("name",name);
+        typeService.updateType(map);
+        return "redirect:/admin/typelist";
+    }
     //删除分类
-
+    @RequestMapping("/deletetype/{id}")
+    public String deletetype(@PathVariable("id") Long id){
+        typeService.deleteType(id);
+        return "redirect:/admin/typelist";
+    }
 }

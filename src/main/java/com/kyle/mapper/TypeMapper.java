@@ -1,6 +1,7 @@
 package com.kyle.mapper;
 
 import com.kyle.pojo.Type;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -26,11 +27,11 @@ public interface TypeMapper {
     //这个是用插件的方式实现分页
     List<Type> listType();
 
-    Type insertType(Type type);
+    int insertType(Type type);
 
     int updateType(Map<String,Object> map);
 
-    int deleteType(Long id);
+    int deleteType(@Param("id") Long id);
 
 
 }
