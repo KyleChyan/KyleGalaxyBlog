@@ -7,10 +7,10 @@ import org.springframework.util.DigestUtils;
 
 @MapperScan("com.kyle.mapper")
 @SpringBootApplication
-public class Blog01Application {
+public class KyleGalaxyBlog {
 
     public static void main(String[] args) {
-        SpringApplication.run(Blog01Application.class, args);
+        SpringApplication.run(KyleGalaxyBlog.class, args);
         String result = DigestUtils.md5DigestAsHex("123456".getBytes());
         System.out.println(result);
     }
