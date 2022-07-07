@@ -13,7 +13,7 @@
 </head>
 <body>
     <!--导航-->
-    <nav class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
         <div class="ui container">
             <div class="ui inverted menu secondary stackable menu">
                 <h2 class="ui teal header item"><i class="home icon"></i></h2>
@@ -26,10 +26,12 @@
                 <a href="#" class="menu-item item mobile-hide"><i class="clock icon"></i>足迹</a>
                 <a href="#" class="item mobile-hide">|</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="user circle icon"></i>我的</a>
+                <!--右侧:搜索框-->
                 <div class="right item">
-                    <div class="ui transparent input">
-                        <input type="text" placeholder="Search....">
-                        <i class="search link icon inverted"></i>
+                    <div class="ui inverted divider"></div>
+                    <div class="ui inverted transparent icon input">
+                        <input type="text" placeholder="搜索...">
+                        <i class="search icon"></i>
                     </div>
                 </div>
             </div>
@@ -48,7 +50,7 @@
                     <!--我的介绍-->
                     <!--头像-->
                     <div>
-                        <img class="ui medium circular bordered image" src="../static/images/3.jpg">
+                        <img class="ui medium circular bordered image" th:src="@{/images/profile.jpg}" src="../static/images/profile.jpg">
                     </div>
                     <!--名片-->
                     <div class="content">
@@ -559,7 +561,7 @@
     </div>
 
     <!--底部footer-->
-    <footer class="ui inverted vertical segment in-padded-tb-three">
+    <footer th:replace="_fragments :: footplace" class="ui inverted vertical segment in-padded-tb-three">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">

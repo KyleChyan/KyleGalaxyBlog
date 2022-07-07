@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
     <link rel="stylesheet" href="../static/css/timeline.css" th:href="@{/css/timeline.css}">
     <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
     <!--    引用的script-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script th:src="@{/lib/prism/prism.js}"></script>
-
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
 </head>
 <body>
 <!--导航-->
@@ -23,21 +24,22 @@
     <div class="ui container">
         <div class="ui inverted menu secondary stackable menu">
             <h2 class="ui teal header item"><i class="home icon"></i></h2>
-            <a href="#" th:href="@{/}" class="menu-item item mobile-hide" th:classappend="${n==1}? 'active'"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/admin/bloglist}" th:classappend="${n==1} ? 'active'" class="menu-item item mobile-hide"><i class="home icon"></i>博客</a>
             <a href="#" class="item mobile-hide">|</a>
-            <a href="#" th:href="@{/type}" class="menu-item item mobile-hide" th:classappend="${n==2}? 'active'"><i class="chart pie icon"></i>分类</a>
+            <a href="#" th:href="@{/admin/typelist}" th:classappend="${n==2} ? 'active'" class="menu-item item mobile-hide"><i class="chart pie icon"></i>分类</a>
             <a href="#" class="item mobile-hide">|</a>
-            <a href="#" th:href="@{/tags}" class="menu-item item mobile-hide" th:classappend="${n==3}? 'active'"><i class="tags icon"></i>标签</a>
-            <a href="#" class="item mobile-hide">|</a>
-            <a href="#" th:href="@{/timeline}"class="menu-item item mobile-hide" th:classappend="${n==4}? 'active'"><i class="clock icon"></i>足迹</a>
-            <a href="#" class="item mobile-hide">|</a>
-            <a href="#" th:href="@{/about}" class="menu-item item mobile-hide" th:classappend="${n==5}? 'active'"><i class="user circle icon"></i>我的</a>
-            <!--右侧:搜索框-->
-            <div class="right item">
-                <div class="ui inverted divider"></div>
-                <div class="ui inverted transparent icon input">
-                    <input type="text" placeholder="搜索...">
-                    <i class="search icon"></i>
+            <a href="#" th:href="@{/admin/taglist}" th:classappend="${n==3} ? 'active'" class="menu-item item mobile-hide"><i class="tags icon"></i>标签</a>
+            <!--                用户头像-->
+            <div class="right menu menu-item mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" th:src="@{/images/profile.jpg}" src="../../static/images/profile.jpg">
+                        Jenny Hess
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a th:href="@{/admin/loginout}" href="#" class="item">注销</a>
+                    </div>
                 </div>
             </div>
         </div>

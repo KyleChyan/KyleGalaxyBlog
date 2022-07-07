@@ -7,20 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * project name   :KyleGalaxyBlog
  *
  * @author :KyleChyan https://github.com/KyleChyan
- * @date :2022/6/23,19:58,星期四
+ * @date :2022/7/2,16:42,星期六
  */
 @Controller
 @RequestMapping("/admin")
-public class BlogListController {
-
-    @RequestMapping("/bloglist")
-    public String bloglist(){
-        return "admin/bloglist";
+public class TagController {
+    @RequestMapping("/taglist")
+    public String taglist(){
+        return "admin/taglist";
     }
 
-    @RequestMapping("/blogpublish")
-    public String blogpublish(){
-        return "admin/blogpublish";
+    @RequestMapping("/addtag")
+    public String addtag(){
+        return "admin/tagadd";
     }
-
 }

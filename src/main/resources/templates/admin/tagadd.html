@@ -3,7 +3,7 @@
 <head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>添加分类</title>
+    <title>添加标签</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/indexcss.css">
     <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
@@ -13,7 +13,7 @@
 </head>
 <body>
     <!--导航-->
-    <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
+    <nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
         <div class="ui container">
             <div class="ui inverted menu secondary stackable menu">
                 <h2 class="ui teal header item"><i class="home icon"></i></h2>
@@ -48,7 +48,7 @@
     <div class="in-padded-tb-three blog-container-60">
         <div class="ui container">
             <!--中间部分整体是一个表单-->
-            <form action="#" th:action="@{/admin/typelist}" method="post" class="ui segment form">
+            <form action="#" method="post" class="ui segment form">
                 <!--名称-->
                 <div class="required field">
                     <div class="ui left labeled input">
@@ -67,12 +67,12 @@
                 <!--返回和发布-->
                 <div class="ui container right aligned">
 <!--                    返回按钮-->
-                    <button type="button" class="ui red basic mini labeled icon button" onclick="window.history.go(-1)">
+                    <button type="button" class="ui red basic mini labeled icon button active" onclick="window.history.go(-1)">
                         <i class="left chevron icon"></i>
                         返回
                     </button>
 <!--                    保存按钮-->
-                    <button class="ui green basic mini labeled icon submit button">
+                    <button class="ui green basic mini labeled icon button active">
                         <i class="save icon"></i>
                         保存
                     </button>
@@ -154,10 +154,31 @@
     $('.ui.form').form({
         fields : {
             title: {
-                identifier:'name',
+                identifier:'title',
                 rules:[{
                     type: 'empty',
-                    prompt: '请输入分类名称'
+                    prompt: '请输入博客标题'
+                }]
+            },
+            content: {
+                identifier:'content',
+                rules:[{
+                    type: 'empty',
+                    prompt: '请输入博客内容'
+                }]
+            },
+            type: {
+                identifier:'type',
+                rules:[{
+                    type: 'empty',
+                    prompt: '请选择分类'
+                }]
+            },
+            tag: {
+                identifier:'tag',
+                rules:[{
+                    type   : 'minCount[1]',
+                    prompt : '请选择至少一个标签'
                 }]
             }
         }

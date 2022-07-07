@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="_fragments :: head(~{::title})">
+<head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>博客管理</title>
+    <title>分类列表</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/indexcss.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
@@ -11,7 +11,7 @@
 </head>
 <body>
     <!--导航-->
-    <nav class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
+    <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
         <div class="ui container">
             <div class="ui inverted menu secondary stackable menu">
                 <h2 class="ui teal header item"> <i class="home icon"><a th:href="@{/}"></a></i></h2>
@@ -24,7 +24,7 @@
                 <div class="right menu menu-item mobile-hide">
                     <div class="ui dropdown item">
                         <div class="text">
-                            <img class="ui avatar image" src="../../static/images/3.jpg">
+                            <img class="ui avatar image" src="../../static/images/profile.jpg">
                             Jenny Hess
                         </div>
                         <i class="dropdown icon"></i>
@@ -38,18 +38,18 @@
         <!--        折叠标志-->
         <a href="#" class="ui icon black button mobile-show menu toggle" style="position:absolute;top: 0;right: 0;"><i class="sidebar icon"></i></a>
     </nav>
-    <!--二级导航-->
-    <div class="ui attached pointing menu">
-        <div class="ui container">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
-        </div>
-    </div>
+
     <br>
 
     <!--展示的分页中间内容-->
     <div class="in-padded-tb-three blog-container-60">
         <div class="ui container">
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：
+                </div>
+                <p th:text="${message}">操作成功</p>
+            </div>
             <table class="ui striped table">
                 <thead>
                     <tr>
@@ -64,14 +64,34 @@
                     <td th:text="${type.name}">生活</td>
                     <td>
                         <a href="#" class="ui mini teal button">编辑</a>
-                        <a href="#" class="ui mini red button">删除</a>
+                        <a href="#" th:href="@{/admin/deletetype/{id}(id=${type.id})}" class="ui mini red button ">删除</a>
+                        <!--删除界面的弹出层-->
+                        <div class="ui basic modal">
+                            <div class="ui icon header">
+                                <i class="archive icon"></i>
+                                删除？
+                            </div>
+                            <div class="content">
+                                <p>你确定删除掉这一条吗</p>
+                            </div>
+                            <div class="actions">
+                                <div class="ui red basic cancel inverted button">
+                                    <i class="remove icon"></i>
+                                    我再想想
+                                </div>
+                                <div class="ui green ok inverted button">
+                                    <i class="checkmark icon"></i>
+                                    <a href="#" >就是这个</a>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="6">
-                        <div class="ui pagination mini menu">
+                    <th colspan="6" >
+                        <div class="ui pagination mini menu" >
                             <a class="icon item" th:if="${typePageInfo.hasPreviousPage}" th:href="@{/admin/typelist?pageNum=}+${typePageInfo.prePage}">
                                 <i class="left chevron icon"></i>
                             </a>
@@ -79,13 +99,14 @@
                                 <i class="right chevron icon"></i>
                             </a>
                         </div>
-                        <a href="#" class="ui mini right floated blue basic button"><i class="pencil alternate icon"></i>新增</a>
+                        <a href="#" th:href="@{/admin/addtype}" class="ui mini right floated blue basic button"><i class="pencil alternate icon"></i>新增</a>
                     </th>
                 </tr>
                 </tfoot>
             </table>
         </div>
     </div>
+
 
     <!--底部footer-->
     <footer class="ui inverted vertical segment in-padded-tb-three">
@@ -143,6 +164,21 @@ $('.ui.dropdown')
         on:'hover'
     })
 ;
+//消息窗口的关闭
+$('.message .close')
+    .on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+    })
+;
+<!--删除界面的弹出层-->
+$('.deleter').click(function () {
+$('.ui.basic.modal')
+    .modal('show');
+});
+
 </script>
 
 

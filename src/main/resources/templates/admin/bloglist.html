@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="_fragments :: head(~{::title})">
+<head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>博客管理</title>
+    <title>博客列表</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/indexcss.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
@@ -11,20 +11,20 @@
 </head>
 <body>
     <!--导航-->
-    <nav class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
+    <nav th:replace="admin/_fragments :: menu(1)" class="ui inverted attached segment in-padded-tb-po2 in-shadow-1">
         <div class="ui container">
             <div class="ui inverted menu secondary stackable menu">
                 <h2 class="ui teal header item"><i class="home icon"></i></h2>
-                <a href="#" class="active menu-item item mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" th:href="@{/admin/bloglist}" class="active menu-item item mobile-hide"><i class="home icon"></i>博客</a>
                 <a href="#" class="item mobile-hide">|</a>
                 <a href="#" th:href="@{/admin/typelist}" class="menu-item item mobile-hide"><i class="chart pie icon"></i>分类</a>
                 <a href="#" class="item mobile-hide">|</a>
-                <a href="#" class="menu-item item mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" th:href="@{/admin/taglist}" class="menu-item item mobile-hide"><i class="tags icon"></i>标签</a>
 <!--                用户头像-->
                 <div class="right menu menu-item mobile-hide">
                     <div class="ui dropdown item">
                         <div class="text">
-                            <img class="ui avatar image" src="../../static/images/3.jpg">
+                            <img class="ui avatar image" src="../../static/images/profile.jpg">
                             Jenny Hess
                         </div>
                         <i class="dropdown icon"></i>
@@ -41,8 +41,8 @@
     <!--二级导航-->
     <div class="ui attached pointing menu">
         <div class="ui container">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" th:href="@{/admin/bloglist}" class="teal active item">列表 📚 </a>
+            <a href="#" th:href="@{/admin/blogpublish}" class="item">发布 📰 </a>
         </div>
     </div>
     <br>

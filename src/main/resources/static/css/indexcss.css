@@ -1,5 +1,9 @@
 body {
-    background: #f4f4f4;
+    background-color: #f4f4f4;
+}
+/*背景颜色*/
+.bg-clr-white {
+    background-color: #FFFFFF;
 }
 /*内部间隔*/
 .in-padded-all-po3 {
@@ -42,6 +46,13 @@ body {
     padding-right: 4em !important;
 }
 /*外部间隔*/
+.in-margin-t-p02 {
+    margin-top: 0.2em !important;
+}
+.in-margin-tb-p01 {
+    margin-top: 0.1em !important;
+    margin-bottom: 0.1em !important;
+}
 .in-margin-tb-p03 {
     margin-top: 0.3em !important;
     margin-bottom: 0.3em !important;
