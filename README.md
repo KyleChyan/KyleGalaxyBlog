@@ -12,14 +12,6 @@ Galaxy为银河之意，银河很美，它的美丽是由其中无限个奇迹�
 
 * 博客编写/阅读
 * 将博客*分类*管理，或给予这篇博客相符的*标签*
-* 在*时间线*页面中记录你人生的足迹
-* 
+* 在 *时间线* 页面中记录你人生的足迹
+* 在 *更多* 中加入属于你的独特页面
 ### Guides
-
-The following guides illustrate how to use some features concretely:
-
-* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-
