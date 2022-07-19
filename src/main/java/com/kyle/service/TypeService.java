@@ -16,13 +16,13 @@ import java.util.Map;
  */
 
 public interface TypeService {
-    int selectType(Long id);
+    Type selectTypeById(Long id);
 
     PageInfo<Type> listType(int pageNum, int pageSize);
 
     int insertType(Type type);
 
-    int updateType(Map<String,Object> map);
+    int updateType(Type type);
 
     int deleteType(Long id);
 

@@ -19,7 +19,7 @@ import java.util.Map;
 @Repository
 public interface TypeMapper {
     //根据id查找
-    int selectType(Long id);
+    Type selectTypeById(Long id);
     /*
     //这个是用map+sql的方式实现分页
     List<Type> listType(Map<String,Object> data);
@@ -29,7 +29,7 @@ public interface TypeMapper {
 
     int insertType(Type type);
 
-    int updateType(Map<String,Object> map);
+    int updateType(Type type);
 
     int deleteType(@Param("id") Long id);
 

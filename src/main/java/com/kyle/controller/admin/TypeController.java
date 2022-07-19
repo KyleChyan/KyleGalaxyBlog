@@ -53,7 +53,7 @@ public class TypeController {
         return "admin/typeadd";
     }
     //新增分类
-    @PostMapping("/typelist")
+    @PostMapping("/typeadd")
     public String goaddtype(Type type, RedirectAttributes attributes){
 
         if (type == null) {
@@ -65,12 +65,17 @@ public class TypeController {
         }
         return "redirect:/admin/typelist";
     }
+    //    前往修改书籍页面
+    @RequestMapping("/toupdatetype/{id}")
+    public String toupdateType(@PathVariable("id") Long id , Model model) {
+        Type type = typeService.selectTypeById(id);
+        model.addAttribute("Stype", type);
+        return "admin/typeupdate";
+    }
     //更改分类
-    @RequestMapping("/updatetype/{id}")
-    public String updateType(String name,int id){
-        Map<String, Object> map = new HashMap<>();
-        map.put("name",name);
-        typeService.updateType(map);
+    @PostMapping("/updatetype")
+    public String updateType(Type type){
+        typeService.updateType(type);
         return "redirect:/admin/typelist";
     }
     //删除分类

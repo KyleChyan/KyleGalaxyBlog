@@ -23,9 +23,10 @@ public class TypeServiceImpl implements TypeService {
     @Autowired
     private TypeMapper typeMapper;
 
+
     @Override
-    public int selectType(Long id) {
-        return typeMapper.selectType(id);
+    public Type selectTypeById(Long id) {
+        return typeMapper.selectTypeById(id);
     }
 
     //用插件的方式实现分页
@@ -50,8 +51,8 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public int updateType(Map<String,Object> map) {
-        return typeMapper.updateType(map);
+    public int updateType(Type type) {
+        return typeMapper.updateType(type);
     }
 
     @Override
