@@ -65,7 +65,7 @@ public class TypeController {
         }
         return "redirect:/admin/typelist";
     }
-    //    前往修改书籍页面
+    //前往修改页面
     @RequestMapping("/toupdatetype/{id}")
     public String toupdateType(@PathVariable("id") Long id , Model model) {
         Type type = typeService.selectTypeById(id);

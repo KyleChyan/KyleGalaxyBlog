@@ -3,7 +3,7 @@
 <head th:replace="admin/_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>添加标签</title>
+    <title>添加分类</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/indexcss.css">
     <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
@@ -48,7 +48,7 @@
     <div class="in-padded-tb-three blog-container-60">
         <div class="ui container">
             <!--中间部分整体是一个表单-->
-            <form action="#" method="post" class="ui segment form">
+            <form action="#" th:action="@{/admin/tagadd}" method="post" class="ui segment form">
                 <!--名称-->
                 <div class="required field">
                     <div class="ui left labeled input">
@@ -67,12 +67,12 @@
                 <!--返回和发布-->
                 <div class="ui container right aligned">
 <!--                    返回按钮-->
-                    <button type="button" class="ui red basic mini labeled icon button active" onclick="window.history.go(-1)">
+                    <button type="button" class="ui red basic mini labeled icon button" onclick="window.history.go(-1)">
                         <i class="left chevron icon"></i>
                         返回
                     </button>
 <!--                    保存按钮-->
-                    <button class="ui green basic mini labeled icon button active">
+                    <button class="ui green basic mini labeled icon submit button">
                         <i class="save icon"></i>
                         保存
                     </button>
@@ -154,31 +154,10 @@
     $('.ui.form').form({
         fields : {
             title: {
-                identifier:'title',
+                identifier:'name',
                 rules:[{
                     type: 'empty',
-                    prompt: '请输入博客标题'
-                }]
-            },
-            content: {
-                identifier:'content',
-                rules:[{
-                    type: 'empty',
-                    prompt: '请输入博客内容'
-                }]
-            },
-            type: {
-                identifier:'type',
-                rules:[{
-                    type: 'empty',
-                    prompt: '请选择分类'
-                }]
-            },
-            tag: {
-                identifier:'tag',
-                rules:[{
-                    type   : 'minCount[1]',
-                    prompt : '请选择至少一个标签'
+                    prompt: '请输入分类名称'
                 }]
             }
         }
