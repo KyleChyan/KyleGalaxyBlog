@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kyle.mapper.BlogMapper">
+    <select id="selectBlogById" resultType="com.kyle.pojo.Blog">
+        select *
+        from t_blog
+        where id=#{id};
+    </select>
+    <select id="listBlog" resultType="com.kyle.pojo.Blog">
+        select *
+        from t_blog
+    </select>
+<!--    /* limit #{currIndex} , #{pageSize};*//*如果使用map+sql的方法实现分页，则需要加上limit关键字*/-->
+    <insert id="insertBlog" parameterType="com.kyle.pojo.Blog">
+        insert into t_blog
+        values (#{id},#{appreciation},#{commentable},#{content},#{create_time},#{flag},#{picture},
+                #{published},#{recommend},#{share},#{title},#{update_time},#{views},#{type_id},#{user_id});
+    </insert>
+    <update id="updateBlog" parameterType="com.kyle.pojo.Blog">
+        update t_blog
+        set appreciation = #{appreciation}, content = #{content}, commentable = #{commentable}, create_time = #{create_time},
+            flag = #{flag}, published = #{published}, picture = #{picture}, recommend = #{recommend}, share = #{share},
+            title = #{title},update_time = #{update_time}, views = #{views}, type_id = #{type_id}, user_id = #{user_id}
+        where id = #{id};
+    </update>
+    <delete id="deleteBlog" parameterType="Long">
+        delete
+        from t_blog
+        where id = #{id};
+    </delete>
+</mapper>

@@ -85,15 +85,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>什么是上班</td>
+                <tr th:each="blog,iterStat:${blogPageInfo.list}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${blog.title}">什么是上班</td>
                     <td>生活</td>
                     <td><i class="large green checkmark icon"></i></td>
-                    <td>2013-1-1</td>
+                    <td th:text="${blog.createTime}">2013-1-1</td>
                     <td>
-                        <a href="#" class="ui mini teal button">编辑</a>
-                        <a href="#" class="ui mini red button">删除</a>
+                        <a href="#" th:href="@{/admin/updateblog/{id}(id=${blog.id})}" class="ui mini teal button">编辑</a>
+                        <a href="#" th:href="@{/admin/deleteblog/{id}(id=${blog.id})}" class="ui mini red button">删除</a>
                     </td>
                 </tr>
                 </tbody>
