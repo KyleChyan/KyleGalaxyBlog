@@ -66,14 +66,14 @@ public class TypeController {
         return "redirect:/admin/typelist";
     }
     //前往修改页面
-    @RequestMapping("/toupdatetype/{id}")
+    @RequestMapping("/updatetype/{id}")
     public String toupdateType(@PathVariable("id") Long id , Model model) {
         Type type = typeService.selectTypeById(id);
         model.addAttribute("Stype", type);
         return "admin/typeupdate";
     }
     //更改分类
-    @PostMapping("/updatetype")
+    @PostMapping("/toupdatetype")
     public String updateType(Type type){
         typeService.updateType(type);
         return "redirect:/admin/typelist";

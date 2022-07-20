@@ -63,7 +63,7 @@
                     <td th:text="${iterStat.count}">1</td>
                     <td th:text="${type.name}">生活</td>
                     <td>
-                        <a href="#" th:href="@{/admin/toupdatetype/{id}(id=${type.id})}" class="ui mini teal button">编辑</a>
+                        <a href="#" th:href="@{/admin/updatetype/{id}(id=${type.id})}" class="ui mini teal button">编辑</a>
                         <a href="#" th:href="@{/admin/deletetype/{id}(id=${type.id})}" class="ui mini red button ">删除</a>
                         <!--删除界面的弹出层-->
                         <div class="ui basic modal">

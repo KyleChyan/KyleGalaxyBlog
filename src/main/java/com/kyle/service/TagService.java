@@ -2,10 +2,7 @@ package com.kyle.service;
 
 import com.github.pagehelper.PageInfo;
 import com.kyle.pojo.Tag;
-import com.kyle.pojo.Type;
-import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
 
 /**
  * project name   :KyleGalaxyBlog

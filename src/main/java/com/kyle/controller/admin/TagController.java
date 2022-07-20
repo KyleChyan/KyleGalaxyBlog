@@ -22,7 +22,7 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    //前往分类列表
+    //前往标签列表
     @GetMapping("/taglist")
     public String gotaglist(@RequestParam(value = "pageNum",required = false,defaultValue = "1")int pageNum,
                                     @RequestParam(value = "pageSize",required = false,defaultValue = "5") int pageSize,Model model) {
@@ -35,12 +35,12 @@ public class TagController {
         return "admin/taglist";
 
     }
-    //前往新增分类页面
+    //前往新增标签页面
     @RequestMapping("/addtag")
     public String addtag(){
         return "admin/tagadd";
     }
-    //新增分类
+    //新增标签
     @PostMapping("/tagadd")
     public String goaddtag(Tag tag, RedirectAttributes attributes){
 
@@ -53,21 +53,21 @@ public class TagController {
         }
         return "redirect:/admin/taglist";
     }
-    //前往修改页面
+    //前往修改标签页面
     @RequestMapping("/toupdatetag/{id}")
     public String toupdateTag(@PathVariable("id") Long id , Model model) {
         Tag tag = tagService.selectTagById(id);
         model.addAttribute("Stag", tag);
         return "admin/tagupdate";
     }
-    //更改分类
+    //修改标签
     @PostMapping("/updatetag")
     public String updateTag(Tag tag){
         tagService.updateTag(tag);
         return "redirect:/admin/taglist";
     }
-    //删除分类
-    @RequestMapping("/deletetag/{id}")
+    //删除标签
+    @GetMapping("/deletetag/{id}")
     public String deletetag(@PathVariable("id") Long id){
         tagService.deleteTag(id);
         return "redirect:/admin/taglist";

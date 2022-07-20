@@ -25,12 +25,12 @@ public class Comment {
     @Id
     @GeneratedValue
     private Long id;
-    private String nickname;
+    private String nickname;//昵称
     private String email;
     private String content;
-    private String avatar;
+    private String avatar;//头像
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createTime;
+    private Date createTime;//评论时间
 
     //评论和博客，多对一关系
     @ManyToOne
