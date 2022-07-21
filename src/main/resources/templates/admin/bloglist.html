@@ -56,10 +56,9 @@
                         <input type="text" name="title" placeholder="标题">
                     </div>
                     <div class="field">
-                        <select class="ui dropdown">
-                            <option value="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
+                        <select  class="ui dropdown">
+                            <option value="">筛选分类</option>
+                            <option th:each="type : ${typelist}" th:data-value="${type.id}" th:text="${type.name}" value="1">Male</option>
                         </select>
                     </div>
                     <div class="field">
@@ -108,7 +107,7 @@
                                 <i class="right chevron icon"></i>
                             </a>
                         </div>
-                        <a href="#" class="ui mini right floated blue basic button"><i class="pencil alternate icon"></i>新增</a>
+                        <a href="#" th:href="@{/admin/blogpublish}" class="ui mini right floated blue basic button"><i class="pencil alternate icon"></i>新增</a>
                     </th>
                 </tr>
                 </tfoot>

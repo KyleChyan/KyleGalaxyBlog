@@ -45,7 +45,8 @@ public class Blog {
 
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Tag> tags=new ArrayList<>();
-
+    @Transient
+    private String tagId;
     @ManyToOne
     private User user;
 

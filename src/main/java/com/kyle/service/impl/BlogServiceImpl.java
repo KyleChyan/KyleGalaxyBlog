@@ -10,6 +10,7 @@ import com.kyle.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +42,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public int insertBlog(Blog blog) {
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+        blog.setViews(0);
         return blogMapper.insertBlog(blog);
     }
 

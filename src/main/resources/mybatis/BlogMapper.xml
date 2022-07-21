@@ -12,9 +12,12 @@
     </select>
 <!--    /* limit #{currIndex} , #{pageSize};*//*如果使用map+sql的方法实现分页，则需要加上limit关键字*/-->
     <insert id="insertBlog" parameterType="com.kyle.pojo.Blog">
-        insert into t_blog
-        values (#{id},#{appreciation},#{commentable},#{content},#{create_time},#{flag},#{picture},
-                #{published},#{recommend},#{share},#{title},#{update_time},#{views},#{type_id},#{user_id});
+        insert into t_blog (blog.t_blog.id, blog.t_blog.appreciation, blog.t_blog.commentable,
+                            blog.t_blog.content, blog.t_blog.flag, blog.t_blog.picture,
+                            blog.t_blog.published, blog.t_blog.recommend, blog.t_blog.share, blog.t_blog.title,
+                            blog.t_blog.views)
+        values (#{id},#{appreciation},#{commentable},#{content},#{flag},#{picture},
+                #{published},#{recommend},#{share},#{title},#{views});
     </insert>
     <update id="updateBlog" parameterType="com.kyle.pojo.Blog">
         update t_blog

@@ -3,6 +3,8 @@ package com.kyle.service;
 import com.github.pagehelper.PageInfo;
 import com.kyle.pojo.Type;
 
+import java.util.List;
+
 
 /**
  * project name   :KyleGalaxyBlog
@@ -15,6 +17,8 @@ public interface TypeService {
     Type selectTypeById(Long id);
 
     PageInfo<Type> listType(int pageNum, int pageSize);
+
+    List<Type> allType();
 
     int insertType(Type type);
 

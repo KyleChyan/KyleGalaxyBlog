@@ -10,6 +10,7 @@ import com.kyle.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,10 +40,35 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public List<Tag> allTag() {
+        return tagMapper.listTag();
+    }
+
+    @Override
     public int insertTag(Tag tag) {
         return tagMapper.insertTag(tag);
     }
 
+    @Override
+    public List<Tag> getListTagByString(String tagId) {
+        List<Long> longList = converToList(tagId);
+        List<Tag> taglist = new ArrayList<>();
+        for (Long aLong : longList) {
+            taglist.add(tagMapper.selectTagById(aLong));
+        }
+        return taglist;
+    }
+    //字符串转换为list
+    private List<Long> converToList(String ids){
+        List<Long> list = new ArrayList<>();
+        if (ids != null) {
+            String[] split = ids.split(",");
+            for (String s : split) {
+                list.add(new Long(s));
+            }
+        }
+        return list;
+    }
     @Override
     public int updateTag(Tag tag) {
         return tagMapper.updateTag(tag);

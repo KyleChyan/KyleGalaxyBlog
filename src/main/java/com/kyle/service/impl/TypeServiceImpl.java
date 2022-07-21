@@ -46,6 +46,11 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    public List<Type> allType() {
+        return typeMapper.listType();
+    }
+
+    @Override
     public int insertType(Type type) {
         return typeMapper.insertType(type);
     }
